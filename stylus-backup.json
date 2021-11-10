@@ -29,5 +29,24 @@
     "id": 1,
     "_id": "d36812ea-e1da-4902-901d-467844c20d50",
     "_rev": 1636529900408
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1536854300512,
+    "name": "style-002",
+    "sections": [
+      {
+        "code": ".Mt\\(15px\\).D\\(f\\).Ai\\(c\\).Fz\\(14px\\), .W\\(300px\\).Miw\\(300px\\), .W\\(300px\\).Miw\\(300px\\).Mstart\\(60px\\).D\\(n\\)--md.Pos\\(st\\).T\\(80px\\).sticky, #module-engadget-deeplink-streams, #post-right-col, .grid\\@tl\\+__cell.col-4-of-12\\@tl.col-4-of-15\\@d.hide\\@tp-.relative.full-height, #engadget-recirculation-module,.spcv_conversation-footer, .spotim-recirculation, #engadget-article-footer, .t-meta, [data-component=NewsletterCard]{display:none !important;}.Fz\\(30px\\),[data-component=PostInfo]{font-size:20px;}[data-component=LatestStream] > li{padding:10px 0 !important;}",
+        "domains": [
+          "domain-001.com",
+          "domain-002.com"
+        ]
+      }
+    ],
+    "id": 2,
+    "_id": "d36812ea-e1da-4902-901d-467844c20d50",
+    "_rev": 1636529900408
   }
 ]

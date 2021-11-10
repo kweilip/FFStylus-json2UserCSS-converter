@@ -1,74 +1,44 @@
-import fs from 'fs-extra'
-import sanitize from "sanitize-filename";
+const fs = require('fs-extra')
+const path = require('path')
+const sanitize = require('sanitize-filename')
+const css = require('css')
 
-function compileRules(urls, urlPrefixes, domains, regexps) {
-  const rules = []
-  rules.push(`url("${urls}")`)
-  rules.push(`url-prefix("${urlPrefixes}")`)
-  rules.push(`domain("${domains}")`)
-  rules.push(`regexp("${regexps}")`)
-  return `@-moz-document ${rules.join(', ')}`
-}
+const {compileMetadata} = require('./src/compileMetadata')
+const {compileRules} = require('./src/compileRules')
+const {writeUserStyle} = require('./src/writeUserStyle')
 
+async function json2UserStyle() {
+  const pConversion = []
+  const jsonStyles = fs.readJsonSync(`./stylus-backup.json`, {encoding: 'utf8'})
 
-function compileMetadata(name, filePath) {
+  for (const style of jsonStyles) {
+    const name = style['name']
 
-  const templateMetadata = `
-    /* ==UserStyle==
-    @name           Customized {{name}}
-    @version        1.0.0
-    @description    A customized theme for {{name}}
-    @updateURL      http://usercss.localhost/{{filePath}}
-    ==/UserStyle== */
-    `
-  return templateMetadata
-      .replace(/{{name}}/g, name)
-      .replace(/{{filePath}}/g, filePath)
-      .trim()
-}
+    if (name) {
+      for (const section of style['sections']) {
+        // populate metadata, rules, css contents with info from json
+        const filePath = `${sanitize(name)}.user.css`
 
-async function writeUserCSS(header, rules, code, filePath) {
-  const userCSSContent = `
-      ${header} 
-      
-      ${rules} {
-      
-      ${code}
-      
-      }`
+        const header = compileMetadata(name, filePath)
 
-  // return true .user.css is generated successfully
-  return fs.writeFile(filePath, userCSSContent, {encoding: 'utf8'}).then(() => true).catch(() => false)
-}
+        const rules = compileRules(section['urls'], section['urlPrefixes'], section['domains'], section['regexps'])
 
+        const code = css.parse(section['code'])
+        const cssContent = css.stringify(code)
 
-const pConversion = []
-const jsonStyles = JSON.parse(fs.readJsonSync('./stylus-backup.json', {encoding: 'utf8'}))
-
-for (const style of jsonStyles) {
-  const name = style['name']
-
-  if (name) {
-    for (const section of style['sections']) {
-      // populate metadata, rules, css contents with info from json
-      const filePath = `./${sanitize(name)}.user.css`
-
-      const header = compileMetadata(name, filePath)
-
-      const rules = compileRules(section['urls'], section['urlPrefixes'], section['domains'], section['regexps'])
-
-      const code = section['code']
-
-      pConversion.push(writeUserCSS(header, rules, code, filePath))
+        pConversion.push(writeUserStyle(header, rules, cssContent, filePath))
+      }
     }
   }
+
+
+  await Promise.all(pConversion).then((results) => {
+    // check how many promise returned true
+    const successCount = results.filter(result => result).length
+
+    console.log(` ${successCount} out of ${jsonStyles.length} converted successfully`)
+  })
 }
 
-
-await Promise.all(pConversion).then((results) => {
-  // check how many promise returned true
-  const successCount = results.filter(result => result).length
-
-  console.log(` ${successCount} out of ${jsonStyles.length} converted successfully`)
-})
+json2UserStyle();
 
