@@ -4,6 +4,7 @@ function compileMetadata(name, filePath) {
 /* ==UserStyle==
 @name           Customized {{name}}
 @version        1.0.0
+@namespace      http://usercss.localhost/{{filePath}}
 @description    A customized theme for {{name}}
 @updateURL      http://usercss.localhost/{{filePath}}
 ==/UserStyle== */

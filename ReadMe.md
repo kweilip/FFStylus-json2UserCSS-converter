@@ -1,7 +1,7 @@
 ## About
 A simplistic parser to convert `.json` exported from FireFox's stylus extension into UserCSS with its metadata accordingly.
 
-With the `.json` file, `json2UserCSS.js` will populate the info below from each of the section into `*.user.css`:
+`json2UserCSS.js` will populate the info below from each of the section into `*.user.css`:
 - name
 - sections.code
 - sections.urls
@@ -17,4 +17,4 @@ Simply put `stylus-YYYY-MM-DD.json` file into this folder, and execute `node jso
 
 
 ## Tips
-Similar to UserScript, add the attribute `@version` and `@updateURL` with a localhost url to trigger update easier if the file is modified.
+Similar to UserScript, add the metadata `@version` and `@updateURL` with a localhost url to trigger update easier if the file is modified.
