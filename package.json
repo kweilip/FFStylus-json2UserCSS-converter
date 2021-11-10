@@ -2,10 +2,10 @@
   "name": "ffstylus-json2userstyle-converter",
   "version": "1.0.0",
   "description": "Convert the .json backed-up from the Firefox's stylus into .user.css accordingly",
-  "main": "json2UserStyle.js",
+  "main": "json2UserCSS.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "node json2UserStyle.js"
+    "debug": "node json2UserCSS.js"
   },
   "author": "",
   "license": "ISC",

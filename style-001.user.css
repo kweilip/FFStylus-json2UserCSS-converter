@@ -1,15 +1,15 @@
 /* ==UserStyle==
-@name           Minimal windowscentral.com
-@namespace      github.com/kweilip/weip-usercss
+@name           Customized style-001
 @version        1.0.0
-@description    A customized theme with less sidebar/controls distraction
-@author         weip
-@updateURL      http://weip-usercss.localhost/XYZ.user.css
+@description    A customized theme for style-001
+@updateURL      http://usercss.localhost/style-001.user.css
 ==/UserStyle== */
 
-@-moz-document domain("windowscentral.com") {
-    .article-body {
-        font-size: 17px;
-        line-height: 21px;
-    }
+
+@-moz-document url("url-001.com"), url("url-002.com"), url-prefix("url-prefix-001.com"), url-prefix("url-prefix-002.com"), domain("domain-001.com"), domain("domain-002.com"), regexp("domain-001.com"), regexp("domain-002.com") {
+
+body {
+  font-size: 16px;
+}
+
 }

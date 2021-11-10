@@ -5,9 +5,9 @@ const css = require('css')
 
 const {compileMetadata} = require('./src/compileMetadata')
 const {compileRules} = require('./src/compileRules')
-const {writeUserStyle} = require('./src/writeUserStyle')
+const {writeUserCSS} = require('./src/writeUserCSS')
 
-async function json2UserStyle() {
+async function json2UserCSS() {
   const pConversion = []
   const jsonStyles = fs.readJsonSync(`./stylus-backup.json`, {encoding: 'utf8'})
 
@@ -26,7 +26,7 @@ async function json2UserStyle() {
         const code = css.parse(section['code'])
         const cssContent = css.stringify(code)
 
-        pConversion.push(writeUserStyle(header, rules, cssContent, filePath))
+        pConversion.push(writeUserCSS(header, rules, cssContent, filePath))
       }
     }
   }
@@ -40,5 +40,5 @@ async function json2UserStyle() {
   })
 }
 
-json2UserStyle();
+json2UserCSS();
 

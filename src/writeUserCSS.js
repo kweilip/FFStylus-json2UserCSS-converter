@@ -1,6 +1,6 @@
 const fs = require("fs-extra");
 
-async function writeUserStyle(header, rules, code, filePath) {
+async function writeUserCSS(header, rules, code, filePath) {
   const userCSSContent = `
 ${header}
 
@@ -16,5 +16,5 @@ ${code}
 
 
 module.exports = {
-  writeUserStyle
+  writeUserCSS
 }
