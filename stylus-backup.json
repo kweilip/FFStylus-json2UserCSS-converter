@@ -1,0 +1,33 @@
+[
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1536854300512,
+    "name": "style-001",
+    "sections": [
+      {
+        "code": "body{font-size:16px;}",
+        "urls": [
+          "url-001.com",
+          "url-002.com"
+        ],
+        "urlPrefixes": [
+          "url-prefix-001.com",
+          "url-prefix-002.com"
+        ],
+        "domains": [
+          "domain-001.com",
+          "domain-002.com"
+        ],
+        "regexps": [
+          "domain-001.com",
+          "domain-002.com"
+        ]
+      }
+    ],
+    "id": 1,
+    "_id": "d36812ea-e1da-4902-901d-467844c20d50",
+    "_rev": 1636529900408
+  }
+]

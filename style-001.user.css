@@ -1,0 +1,15 @@
+/* ==UserStyle==
+@name           Minimal windowscentral.com
+@namespace      github.com/kweilip/weip-usercss
+@version        1.0.0
+@description    A customized theme with less sidebar/controls distraction
+@author         weip
+@updateURL      http://weip-usercss.localhost/XYZ.user.css
+==/UserStyle== */
+
+@-moz-document domain("windowscentral.com") {
+    .article-body {
+        font-size: 17px;
+        line-height: 21px;
+    }
+}
